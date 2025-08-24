@@ -83,6 +83,49 @@ const lodash = require('lodash');
 
 
 // Third-Party Modules:
-const number = [1, 2, 3, 4, 5];
-const reversed = lodash.reverse(number);
-console.log(reversed);
+// const number = [1, 2, 3, 4, 5];
+// const reversed = lodash.reverse(number);
+// console.log(reversed);
+
+
+
+
+// Node.Js Streams:
+
+// Readble Stream:
+// const readbleStream = fs.createReadStream('example.txt', {encoding: 'utf8'});
+
+// readbleStream.on('data', (chunk) => {
+//     console.log(chunk);
+// })
+
+// readbleStream.on('end', () => {
+//     console.log('Finished reading the file.');
+// })
+
+// readbleStream.on('error', (err) => {
+//     console.error('Error', err);
+// })
+
+
+// Writable Stream:
+// const writableStream = fs.createWriteStream('output02.txt');
+
+// writableStream.write("Hello ");
+// writableStream.write("Nabil");
+// writableStream.end();
+
+// writableStream.on('finish', () => {
+//     console.log('Finished writting to the file');
+// });
+
+
+
+// Piping Stream Method:
+const readbleStream = fs.createReadStream('example.txt');
+const writableStream = fs.createWriteStream('example-output.txt');
+
+readbleStream.pipe(writableStream);
+writableStream.on('finish', () => {
+    console.log('File copied successfully');
+})
