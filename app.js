@@ -1,12 +1,12 @@
-const fs = require('fs');
-const http = require('http');
-const path = require('path');
-const os = require('os');
-const url = require('url');
-const crypto = require('crypto');
-const sayHello = require('./greetings');
-const math = require('./math');
-const lodash = require('lodash');
+// const fs = require('fs');
+// const http = require('http');
+// const path = require('path');
+// const os = require('os');
+// const url = require('url');
+// const crypto = require('crypto');
+// const sayHello = require('./greetings');
+// const math = require('./math');
+// const lodash = require('lodash');
 
 
 // fs Module:
@@ -122,10 +122,185 @@ const lodash = require('lodash');
 
 
 // Piping Stream Method:
-const readbleStream = fs.createReadStream('example.txt');
-const writableStream = fs.createWriteStream('example-output.txt');
+// const readbleStream = fs.createReadStream('example.txt');
+// const writableStream = fs.createWriteStream('example-output.txt');
 
-readbleStream.pipe(writableStream);
-writableStream.on('finish', () => {
-    console.log('File copied successfully');
+// readbleStream.pipe(writableStream);
+// writableStream.on('finish', () => {
+//     console.log('File copied successfully');
+// })
+
+// Pipe Large File Chunk Method:
+// const readLine = require('readline');
+// const readbleStream = fs.createReadStream('example.txt');
+// const rl = readLine.createInterface({input: readbleStream});
+
+// rl.on('line', (line) => {
+//     console.log('Line:', line);
+// });
+
+// rl.on('close', () => {
+//     console.log('Finished proccesing the file');
+// });
+
+
+
+
+
+
+// Working Wth Derecrories:
+
+
+
+// Creating a derectory with Asynchronous Method:
+// fs.mkdir('newDirectory', (err) => {
+//     if (err) {
+//         return console.error('Error Creating Directory', err);
+//     }
+//     console.log('Directory Create Successfully');
+// });
+
+
+// Creating a derectory With Synchronous Method:
+// fs.mkdirSync('newDirectory2');
+// console.log("Directory created Successfully");
+
+
+
+
+//Reading a Directory With Asynchronous Method:
+// fs.readdir('./', (err, files) => {
+//     if(err) {
+//         return console.error('Error reading Directory:', err);
+//     }
+//     console.log('Directory Content', files);
+// });
+
+
+//Reading a Directory With Synchronous Method:
+// const synfiles = fs.readdirSync('./');
+// console.log('Directory Content', synfiles);
+
+
+
+
+// Checking If a directory Exists:
+// const dirname = 'newDirectory';
+
+// if (fs.existsSync(dirname)) {
+//     console.log('Directory Exists');
+// } else {
+//     console.log('Directory does not Exists');
+// };
+
+
+
+// Removing a directory Asynchronous Method:
+// fs.rmdir('newDirectory2', (err) => {
+//     if (err) {
+//         return console.error("Error Removing Directory", err);
+//     }
+//     console.log('Directory Remove Successfully');
+// });
+
+// fs.rm('newDirectory2', {recursive: true}, (err) => {
+//     if (err) {
+//         return console.error("Error Removing Directory", err);
+//     }
+//     console.log('Directory Remove Successfully');
+// });
+
+
+
+
+
+// Renaming a directory Method:
+// fs.rename('Folder1', 'folder02', (err) => {
+//     if (err) {
+//         return console.error('Error renaming directory');
+//     }
+//     console.log('Directory rename Successfully');   
+// });
+
+
+
+
+// Geating Directory Stats:
+// fs.stat('./', (err, stats) => {
+//     if (err) {
+//         return console.error(err);
+//     }
+//     console.log('Directory stats:', stats);
+//     console.log('is directory:', stats.isDirectory());
+// });
+
+
+
+
+// Watching a Directory:
+// fs.watch('./', (eventType, filename) => {
+//     console.log(`Event: ${eventType}`);
+//     if (filename) {
+//         console.log(`Filename: ${filename}`);
+//     }
+// });
+
+
+
+
+
+
+
+
+
+// Event Emitters=>
+
+// const EventEmitter = require('events')
+
+// const emitter = new EventEmitter()
+
+
+// Registering a event listener
+// emitter.on('test1', () => {
+//     console.log('An event has occured barachuda code nodejs!!');
+// })
+
+// emitter.emit('test1');
+
+
+
+
+
+
+
+
+
+
+
+// Event Emitters=>
+
+const EventEmitter = require('events')
+
+const emitter = new EventEmitter()
+
+
+// Registering a event listener
+emitter.on('test1', () => {
+    console.log('An event has occured barachuda code nodejs!!');
 })
+
+
+emitter.on('error', (err) => {
+    console.log('Error event:', err.message)
+})
+
+try {
+
+emitter.emit('test1');
+emitter.removeListener('test1');
+emitter.emit('test1');
+
+} catch (error) {
+
+    emitter.emit('error', error)
+}
